@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QET + Ghost Integration Demo - Zero-Knowledge Publishing</title>
+    <link rel="stylesheet" href="css/ghost-integration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="ghost-theme">
+    <!-- Ghost Admin Header -->
+    <header class="ghost-admin-header">
+        <div class="ghost-header-left">
+            <div class="ghost-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h32v32H0z" fill="#15171A"/>
+                    <path d="M12.8 6.4h6.4v6.4h-6.4z" fill="#fff"/>
+                    <path d="M6.4 12.8h19.2v12.8H6.4z" fill="#fff"/>
+                </svg>
+                <span>Ghost Admin</span>
+            </div>
+            <nav class="ghost-nav">
+                <a href="#" class="nav-active">Dashboard</a>
+                <a href="#">Editor</a>
+                <a href="#">Posts</a>
+                <a href="#">Pages</a>
+                <a href="#">Integrations</a>
+            </nav>
+        </div>
+        <div class="ghost-header-right">
+            <button class="ghost-btn ghost-btn-primary" id="publishBtn">
+                <i class="fas fa-paper-plane"></i>
+                Publish
+            </button>
+            <div class="user-avatar">U</div>
+        </div>
+    </header>
+
+    <!-- Main Integration Layout -->
+    <div class="integration-container">
+        <!-- Ghost Sidebar -->
+        <aside class="ghost-sidebar">
+            <div class="sidebar-section">
+                <h4>Your Publications</h4>
+                <div class="publication-list">
+                    <div class="publication active">
+                        <div class="pub-avatar">T</div>
+                        <div class="pub-info">
+                            <strong>Tech Insights</strong>
+                            <span>tech-blog.com</span>
+                        </div>
+                    </div>
+                    <div class="publication">
+                        <div class="pub-avatar">P</div>
+                        <div class="pub-info">
+                            <strong>Privacy Matters</strong>
+                            <span>privacy-journal.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h4>Recent Posts</h4>
+                <div class="post-list">
+                    <div class="post-item published">
+                        <span class="post-status">✅</span>
+                        <span>Why Encryption Matters in Publishing</span>
+                    </div>
+                    <div class="post-item draft">
+                        <span class="post-status">📝</span>
+                        <span>GDPR Compliance for Bloggers</span>
+                    </div>
+                    <div class="post-item scheduled">
+                        <span class="post-status">🔄</span>
+                        <span>Zero-Knowledge Content Strategy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h4>QET Integration</h4>
+                <div class="integration-features">
+                    <div class="feature">
+                        <span class="feature-icon">🔒</span>
+                        <span>Zero-Knowledge Encryption</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">📄</span>
+                        <span>Professional PDF Export</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">📝</span>
+                        <span>DOCX Editorial Workflow</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">💾</span>
+                        <span>Offline Writing</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="integration-main">
+            <!-- Ghost Editor Header -->
+            <div class="ghost-editor-header">
+                <div class="editor-title">
+                    <input type="text" placeholder="Post Title" value="The Future of Privacy-First Publishing" class="title-input">
+                </div>
+                <div class="editor-actions">
+                    <button class="ghost-btn ghost-btn-secondary" id="saveDraftBtn">
+                        Save Draft
+                    </button>
+                    <button class="ghost-btn ghost-btn-secondary" id="previewBtn">
+                        Preview
+                    </button>
+                    <div class="publish-options">
+                        <button class="ghost-btn ghost-btn-primary" id="publishOptionsBtn">
+                            Publish
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QET Editor Integration -->
+            <div class="qet-integration-section">
+                <div class="integration-header">
+                    <h3>QET Markdown Editor - Powered by Zero-Knowledge Encryption</h3>
+                    <div class="integration-badges">
+                        <span class="badge badge-encrypted">🔒 Encrypted</span>
+                        <span class="badge badge-offline">💾 Offline-First</span>
+                    </div>
+                </div>
+
+                <!-- QET Editor Content -->
+                <div class="qet-editor-container">
+                    <div class="editor-wrapper">
+                        <textarea id="qetEditor" class="qet-editor" placeholder="# Start writing your secure content here...
+
+Write in Markdown and see the preview update in real-time.
+
+## Features
+- 100% Offline
+- Zero-Knowledge Encryption
+- Professional Exports
+- Auto-Save Every 30 Seconds"></textarea>
+                        <div id="qetPreview" class="qet-preview"></div>
+                    </div>
+                </div>
+
+                <!-- Export Options -->
+                <div class="export-options">
+                    <h4>Professional Export Options</h4>
+                    <div class="export-buttons">
+                        <button class="export-btn pdf-export" data-format="pdf">
+                            <span>📄</span>
+                            Export PDF
+                        </button>
+                        <button class="export-btn docx-export" data-format="docx">
+                            <span>📝</span>
+                            Export DOCX
+                        </button>
+                        <button class="export-btn html-export" data-format="html">
+                            <span>🌐</span>
+                            Export HTML
+                        </button>
+                        <button class="export-btn md-export" data-format="md">
+                            <span>📋</span>
+                            Export Markdown
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Integration Benefits -->
+                <div class="integration-benefits">
+                    <h4 style="margin-bottom: 24px;">Why QET + Ghost Integration</h4>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🔒</div>
+                            <h5>Zero-Knowledge Security</h5>
+                            <p>Content encrypted before reaching Ghost servers. Perfect for GDPR/CCPA compliance.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">📄</div>
+                            <h5>Premium Content</h5>
+                            <p>Generate professional PDFs for gated content, e-books, and premium subscriptions.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">💼</div>
+                            <h5>Enterprise Workflow</h5>
+                            <p>DOCX export for editorial review and client approvals before publishing.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">✈️</div>
+                            <h5>Offline Writing</h5>
+                            <p>Write and edit without internet, sync when reconnected. Perfect for travel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Integration Modal -->
+    <div id="integrationModal" class="integration-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🚀 QET + Ghost Integration Active</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="integration-status">
+                    <div class="status-item success">
+                        <span class="status-icon">✅</span>
+                        <div class="status-text">
+                            <strong>Zero-Knowledge Encryption</strong>
+                            <span>Content encrypted client-side</span>
+                        </div>
+                    </div>
+                    <div class="status-item success">
+                        <span class="status-icon">✅</span>
+                        <div class="status-text">
+                            <strong>Professional Export Engine</strong>
+                            <span>PDF, DOCX, HTML ready</span>
+                        </div>
+                    </div>
+                    <div class="status-item success">
+                        <span class="status-icon">✅</span>
+                        <div class="status-text">
+                            <strong>Offline-First Architecture</strong>
+                            <span>Write anywhere, sync later</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="integration-cta">
+                    <h4>Ready to enhance your Ghost publication?</h4>
+                    <p>This demo shows how QET's technology integrates seamlessly with Ghost to provide enterprise-grade publishing capabilities.</p>
+                    <div class="cta-buttons">
+                        <button class="cta-btn primary" id="scheduleDemoBtn">
+                            Schedule Technical Demo
+                        </button>
+                        <button class="cta-btn secondary" id="viewDocsBtn">
+                            View Integration Docs
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/markdown-parser.js"></script>
+    <script src="js/ghost-integration.js"></script>
+</body>
+</html>
+
